@@ -1,6 +1,7 @@
 # vue_components
-Live Session Code for Week4 
-(Date: 31-05-2022)
+Live Session Code for Week4 \
+(Date: 31-05-2022) \
+[Session Link](https://www.youtube.com/watch?v=95sMqCQt_V4&t=6357s)
 
 ## Agenda for the Session
 - How to create local and global components in vue.
