@@ -1,4 +1,4 @@
 export default {
-  template: `<li><span> {{taskData}} </span> <button @click="$emit('deleteTask', index)"> Delete Me </button></li>`,
-  props: ['taskData', 'index'],
+  template: `<li><span> {{taskData.title}} </span> <button @click="$emit('deleteTask', taskData.id)"> Delete </button></li>`,
+  props: ['taskData'],
 }
