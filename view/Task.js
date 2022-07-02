@@ -37,6 +37,9 @@ export default {
 
   methods: {
     updateTask(taskId) {
+      /**
+       *
+       */
       this.$router.push({ name: 'update', params: { id: taskId } })
     },
     deleteTask() {
