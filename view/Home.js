@@ -15,6 +15,9 @@ export default {
      <div>
        <button @click="createTask"> Create New Task </button>
      </div>
+     <div>
+     {{this.$store.state.loggedIn}}
+     </div>
   </div>
   
   <Wait v-else></Wait>
@@ -54,7 +57,12 @@ export default {
   },
 
   mounted() {
-    FetchFunction(`${ApiUrl}/tasks`, {})
+    FetchFunction(`${ApiUrl}/tasks`, {
+      headers: {
+        'Authentication-token':
+          'WyJlZmFjYzIxZDY1NGM0YmU3ODQ5MjNmYThjN2M5Njg4MyJd.Yr-ukQ.wVsUankhOIQECkL6IjzCh34kOkk',
+      },
+    })
       .then((data) => {
         console.log(data)
         this.taskArray = data
