@@ -5,3 +5,9 @@
 #task-buttons {
   padding: 10px 0px;
 }
+
+#logout {
+  padding: 10px;
+  cursor: pointer;
+  float: right;
+}

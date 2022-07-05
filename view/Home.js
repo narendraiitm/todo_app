@@ -16,7 +16,6 @@ export default {
        <button @click="createTask"> Create New Task </button>
      </div>
      <div>
-     {{this.$store.state.loggedIn}}
      </div>
   </div>
   
@@ -39,30 +38,13 @@ export default {
     createTask() {
       this.$router.push({ name: 'createTask' })
     },
-    // deleteTaskMethod(taskId) {
-    //   FetchFunction(`http://172.19.152.200:5001/api/tasks/${taskId}`, {
-    //     method: 'DELETE',
-    //   })
-    //     .then(() => {
-    //       alert('Successfully Deleted')
-    //     })
-    //     .catch((err) => {
-    //       console.log(err.message)
-    //     })
-    // },
-    // addTaskArray() {
-    //   this.taskArray.push(this.taskItem)
-    //   this.taskItem = ''
-    // },
   },
 
   mounted() {
-    FetchFunction(`${ApiUrl}/tasks`, {
-      headers: {
-        'Authentication-token':
-          'WyJlZmFjYzIxZDY1NGM0YmU3ODQ5MjNmYThjN2M5Njg4MyJd.Yr-ukQ.wVsUankhOIQECkL6IjzCh34kOkk',
-      },
-    })
+    if (this.$store.state.loggedIn === false) {
+      this.$router.push({ name: 'login' })
+    }
+    FetchFunction({ url: `${ApiUrl}/tasks`, authRequired: true })
       .then((data) => {
         console.log(data)
         this.taskArray = data
