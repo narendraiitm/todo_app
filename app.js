@@ -3,16 +3,12 @@ import MainComp from './components/MainComp.js'
 import Main from './components/Main.js'
 import router from './router/index.js'
 import store from './vuex/index.js'
-
-Vue.component('header-comp', {
-  template: `<div> Hello from the header
-  </div>`,
-})
+import Header from './components/Header.js'
 
 const vm = new Vue({
   el: '#app',
   template: `<div>
-      <header-comp></header-comp>
+      <Header />
       <Main />
       <footer-comp></footer-comp>
   </div>`,
@@ -20,6 +16,7 @@ const vm = new Vue({
   components: {
     'footer-comp': footerComp,
     Main,
+    Header,
   },
   router,
   store,

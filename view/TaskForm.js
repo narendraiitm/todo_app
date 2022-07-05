@@ -31,12 +31,16 @@ export default {
 
   methods: {
     postData() {
-      FetchFunction(this.baseUrl, {
-        method: this.$route.params.id ? 'PUT' : 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      FetchFunction({
+        url: this.baseUrl,
+        init_obj: {
+          method: this.$route.params.id ? 'PUT' : 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(this.task),
         },
-        body: JSON.stringify(this.task),
+        authRequired: true,
       })
         .then(() => {
           alert('data successfully Inserted')
@@ -50,7 +54,10 @@ export default {
 
   mounted() {
     if (this.$route.params.id) {
-      FetchFunction(`${ApiUrl}/tasks/${this.$route.params.id}`, {})
+      FetchFunction({
+        url: `${ApiUrl}/tasks/${this.$route.params.id}`,
+        authRequired: true,
+      })
         .then((data) => {
           this.task.title = data.title
           this.task.description = data.description

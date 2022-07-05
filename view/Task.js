@@ -45,8 +45,12 @@ export default {
     deleteTask() {
       const sure = confirm('Are you sure?')
       if (sure) {
-        FetchFunction(`${ApiUrl}/tasks/${this.taskId}`, {
-          method: 'DELETE',
+        FetchFunction({
+          url: `${ApiUrl}/tasks/${this.taskId}`,
+          init_obj: {
+            method: 'DELETE',
+          },
+          authRequired: true,
         })
           .then(() => {
             alert('Successfully Deleted')
@@ -64,7 +68,7 @@ export default {
   },
 
   mounted() {
-    FetchFunction(`${ApiUrl}/tasks/${this.taskId}`, {})
+    FetchFunction({ url: `${ApiUrl}/tasks/${this.taskId}`, authRequired: true })
       .then((data) => {
         this.task = data
         console.log(data)
